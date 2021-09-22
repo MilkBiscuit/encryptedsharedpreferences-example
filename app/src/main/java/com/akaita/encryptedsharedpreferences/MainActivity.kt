@@ -28,23 +28,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initEncrypted.setOnCheckedChangeListener { _, checked -> initSharedPreferences(checked) }
         saveButton.setOnClickListener { saveValue() }
         readButton.setOnClickListener { readValue() }
 
-        initEncrypted.isChecked = true
-    }
-
-    private fun initSharedPreferences(checked: Boolean) {
-        resetSharedPreferences()
-
-        if (checked) {
-            initEncryptedSharedPreferences()
-        } else {
-            initCleartextSharedPreferences()
-        }
-
         hideKeyboard()
+        initEncryptedSharedPreferences()
         showRawFile()
     }
 
